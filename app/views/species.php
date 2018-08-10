@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Planets</title>
+		<title>Species</title>
 		<meta charset="utf-8">
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script src="../js/md5.js"></script>
@@ -12,11 +12,9 @@
 	</head>
 	<body>
 		<?php require_once("../../include/nav.php"); ?>
-		<div id="letters">
-			
-		</div>
+		<div id="letters"></div>
 		<script>
-			api_call('planets')
+			api_call('species')
 		</script>
 		<div id="masterlist">
 			<ul id="list"></ul>

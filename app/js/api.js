@@ -1,56 +1,55 @@
-function api_call(){
+function api_call(main_path,page){
 	
-	//const url_api = "https://gateway.marvel.com/v1/public/"+main_path
+	const url_api = "https://swapi.co/api/"+main_path
 
 	$.ajax({
 		type: 'GET',
-		url: "https://swapi.co/api/planets/1/",
-		dataType: 'json'
+		url: url_api,
+		dataType: 'json',
+		data: {"page":page}
 	}).done(function(data){
 		father = document.getElementById('list')
-		//var tam = data["data"]["results"].length
-		console.log(data)
-		/*for(var i=0;i<tam;i++){
-			elem = document.createElement('li')
-			img = document.createElement('img')
-			img.src = data["data"]["results"][i]["thumbnail"].path+"."
-					 +data["data"]["results"][i]["thumbnail"].extension
-			elem.appendChild(img)
-			father.appendChild(elem)
-		}*/
+		var len = data["results"].length
+		//console.log(data)
+
+		if(data["next"] != null){
+			for(var i=0;i < len;i++){
+				var li = document.createElement("li")
+				var a = document.createElement('a')
+				li.className = 'element'
+				//li.addEventListener('click',(e)=>{redirect("x",main_path)})
+				a.innerHTML = data["results"][i]["name"]
+				a.href = data["results"][i]["url"]
+				li.appendChild(a)
+				father.appendChild(li)
+			}
+			api_call(main_path,page+1)
+		}
 	}).fail(function(){
 		console.log("Error")
 	});
 }
-function getTimestamp(){
-	let date = new Date()
-	let timestamp = date.getDate()
-	return timestamp
-}
-
-function getPublicKey(){
-	return "402d6a7cfb4795d0287880e47b42dbbb"
-}
 
 function getDataArray(main_path){
 	var data_array = new Array()
-	var public = getPublicKey()
-	var timestamp = getTimestamp()
-	var limit = 99
-	var hash = hashmd5(timestamp,public)
-	//console.log(hash)
 	switch(main_path){
-		case 'characters':
-			data_array = {"limit":limit, "orderBy":"name", "ts":timestamp, "apikey":public, "hash":hash}
+		case 'films':
+			data_array = {}
 			break
-		case 'comics':
-			data_array = {"limit":limit, "format":"magazine", "orderBy":"title", "ts":timestamp, "apikey":public,"hash":hash}
+		case 'people':
+			data_array = {}
 			break
-		case 'series':
-			data_array = {"limit":limit, "orderBy":"title", "ts":timestamp, "apikey":public,"hash":hash}
+		case 'planets':
+			data_array = {}
 			break
-		case 'stories':
-			data_array = {"limit":limit, "orderBy":"name", "ts":timestamp, "apikey":public,"hash":hash}
+		case 'species':
+			data_array = {}
+			break
+		case 'starships':
+			data_array = {}
+			break
+		case 'vehicles':
+			data_array = {}
 			break
 	}
 	return data_array

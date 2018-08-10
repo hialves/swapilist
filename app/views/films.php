@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Characters</title>
+		<title>Films</title>
 		<meta charset="utf-8">
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script src="../js/md5.js"></script>
@@ -12,13 +12,12 @@
 	</head>
 	<body>
 		<?php require_once("../../include/nav.php"); ?>
-		<div id="letters">
-			
-		</div>
+		<div id="letters"></div>
 		<script>
-			search_buttons('characters')
-			api_call('characters')
+			api_call('films')
 		</script>
-		<ul id="list"></ul>
+		<div id="masterlist">
+			<ul id="list"></ul>
+		</div>
 	</body>
 </html>	
