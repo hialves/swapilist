@@ -8,49 +8,73 @@ function api_call(main_path,page){
 		dataType: 'json',
 		data: {"page":page}
 	}).done(function(data){
-		father = document.getElementById('list')
-		var len = data["results"].length
-		//console.log(data)
-
-		if(data["next"] != null){
-			for(var i=0;i < len;i++){
-				var li = document.createElement("li")
-				var a = document.createElement('a')
-				li.className = 'element'
-				//li.addEventListener('click',(e)=>{redirect("x",main_path)})
-				a.innerHTML = data["results"][i]["name"]
-				a.href = data["results"][i]["url"]
-				li.appendChild(a)
-				father.appendChild(li)
-			}
-			api_call(main_path,page+1)
-		}
+		console.log(data)
+		getData(main_path,data,page)
 	}).fail(function(){
 		console.log("Error")
 	});
 }
 
-function getDataArray(main_path){
-	var data_array = new Array()
+function getId(main_path,data,position){
+	var str = data["results"][position]["url"]
+	var id = str.split("/")
+	for(let i=0;i<id.length;i++){
+		if(id[i] == main_path){
+			return id[i+1]
+		}
+	}
+}
+
+function getData(main_path,data,page){
+	var len = data["results"].length
+	father = document.getElementById('list')
 	switch(main_path){
 		case 'films':
-			data_array = {}
+			for(var i=0;i < len;i++){
+				var li = document.createElement("li")
+				var a = document.createElement('a')
+				li.className = 'element'
+				//li.addEventListener('click',(e)=>{redirect(getId(main_path,data,i),main_path)})
+				a.innerHTML = data["results"][i]["title"]
+				//a.href = data["results"][i]["url"]
+				a.href="#"
+				li.appendChild(a)
+				father.appendChild(li)
+			}
 			break
-		case 'people':
-			data_array = {}
-			break
-		case 'planets':
-			data_array = {}
-			break
-		case 'species':
-			data_array = {}
-			break
-		case 'starships':
-			data_array = {}
-			break
-		case 'vehicles':
-			data_array = {}
+		default:
+			if(data["next"] != null){
+				for(var i=0;i < len;i++){
+					var li = document.createElement("li")
+					var a = document.createElement('a')
+					li.className = 'element'
+					li.addEventListener('click',(e)=>{openPopUp(main_path,getId(main_path,data,i))})
+					a.innerHTML = data["results"][i]["name"]
+					a.href = data["results"][i]["url"]
+					li.appendChild(a)
+					father.appendChild(li)
+				}
+				api_call(main_path,page+1)
+			}
 			break
 	}
-	return data_array
+}
+
+function loadPopUp(main_path,id){
+	const url_api = "https://swapi.co/api/"+main_path+"/"+id
+
+	$.ajax({
+		type: 'GET',
+		url: url_api,
+		dataType: 'json',
+	}).done(function(data){
+		console.log(data)
+		openPopUp(main_path,data)
+	}).fail(function(){
+		console.log("Error")
+	});
+}
+
+function openPopUp(main_path,data){
+	
 }

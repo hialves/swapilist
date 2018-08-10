@@ -14,7 +14,7 @@
 		<?php require_once("../../include/nav.php"); ?>
 		<div id="letters"></div>
 		<script>
-			api_call('species')
+			api_call('species',1)
 		</script>
 		<div id="masterlist">
 			<ul id="list"></ul>

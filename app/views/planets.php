@@ -16,7 +16,7 @@
 			
 		</div>
 		<script>
-			api_call('planets')
+			api_call('planets',1)
 		</script>
 		<div id="masterlist">
 			<ul id="list"></ul>
