@@ -2,20 +2,22 @@
 <html>
 	<head>
 		<title>Characters</title>
-		<meta charset="utf-8">
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script src="../js/md5.js"></script>
-		<script src="../js/api.js"></script>
-		<link href="../css/fulllist.css" rel="stylesheet">
-		<script src="../js/functions.js"></script>
+		<?php require_once("../../include/head.php"); ?>
 	</head>
 	<body>
-		<?php require_once("../../include/nav.php"); ?>
+		
 		<script>
 			api_call('people',1)
 		</script>
-		<div id="masterlist">
-			<ul id="list"></ul>
+		<main>
+			<?php require_once("../../include/nav.php"); ?>
+			<div id="masterlist">
+				<ul id="list"></ul>
+			</div>
+		</main>
+		<div id="popup">
+			<button id='close' onclick="close_popup()">X</button>
+			<div id="data"></div>
 		</div>
 	</body>
 </html>	

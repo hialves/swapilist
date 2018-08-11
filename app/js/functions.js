@@ -44,26 +44,15 @@ function add_childs(data,father,len){
 		father.appendChild(elem)
 	}
 }
-function getDataArray_Search(letter,main_path){
-	var data_array = new Array()
-	var public = getPublicKey()
-	var timestamp = getTimestamp()
-	var limit = 99
-	var hash = hashmd5(timestamp,public)
-	//console.log(hash)
-	switch(main_path){
-		case 'characters':
-			data_array = {"limit":limit, "orderBy":"name", "nameStartsWith":letter, "ts":timestamp, "apikey":public, "hash":hash}
-			break
-		case 'comics':
-			data_array = {"limit":limit, "format":"magazine", "titleStartsWith":letter, "orderBy":"title", "ts":timestamp, "apikey":public,"hash":hash}
-			break
-		case 'series':
-			data_array = {"limit":limit, "orderBy":"title", "ts":timestamp, "apikey":public,"hash":hash}
-			break
-		case 'stories':
-			data_array = {"limit":limit, "orderBy":"name", "ts":timestamp, "apikey":public,"hash":hash}
-			break
-	}
-	return data_array
+
+function close_popup(){
+	var father = document.getElementById('data')
+	delete_childs(father)
+	document.getElementById('popup').style.display = 'none'
+	document.getElementsByTagName('main')[0].style.filter = 'none'
+}
+
+function formatOpeningText(text){
+	text = text.replace(/(?:\r\n|\r|\n)/g, '<br>')
+	return text
 }
