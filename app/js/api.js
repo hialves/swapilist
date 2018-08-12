@@ -1,6 +1,6 @@
+//Requisição inicial ajax
 function api_call(main_path,page){
 	const url_api = "https://swapi.co/api/"+main_path
-
 	$.ajax({
 		type: 'GET',
 		url: url_api,
@@ -13,16 +13,7 @@ function api_call(main_path,page){
 	});
 }
 
-/*function getId(main_path,data,position){
-	var str = data["results"][position]["url"]
-	var id = str.split("/")
-	for(let i=0;i<id.length;i++){
-		if(id[i] == main_path){
-			return id[i+1]
-		}
-	}
-}*/
-
+//Obtém os dados ajax e os adiciona ao DOM
 function getData(main_path,data,page){
 	var len = data["results"].length
 	father = document.getElementById('list')
@@ -31,9 +22,9 @@ function getData(main_path,data,page){
 			for(var i=0;i < len;i++){
 				var li = document.createElement("li")
 				if(i%2==0){
-					li.className = 'element waves-effect waves-light'
+					li.className = 'element waves-effect waves-yellow'
 				}else{
-					li.className = 'element waves-effect waves-light'
+					li.className = 'element waves-effect waves-yellow'
 				}
 				let info = data["results"][i]
 				li.addEventListener('click',(e)=>openPopUp(main_path,info))
@@ -46,9 +37,9 @@ function getData(main_path,data,page){
 				for(var i=0;i < len;i++){
 					var li = document.createElement("li")
 					if(i%2==0){
-						li.className = 'element waves-effect waves-light'
+						li.className = 'element waves-effect waves-yellow'
 					}else{
-						li.className = 'element waves-effect waves-light'
+						li.className = 'element waves-effect waves-yellow'
 					}
 					//let id = getId(main_path,data,i)
 					let info = data["results"][i]
@@ -56,6 +47,8 @@ function getData(main_path,data,page){
 					li.innerHTML = data["results"][i]["name"]
 					father.appendChild(li)
 				}
+				//Se ainda existir dados a serem carregados
+				//a função principal é chamada novamente recursivamente
 				if(data["next"] != null){
 					api_call(main_path,page+1)
 				}
@@ -64,41 +57,37 @@ function getData(main_path,data,page){
 	}
 }
 
-/*function loadPopUp(main_path,id){
-	const url_api = "https://swapi.co/api/"+main_path+"/"+id
-	$.ajax({
-		type: 'GET',
-		url: url_api,
-		dataType: 'json',
-	}).done(function(data){
-		openPopUp(main_path,data)
-	}).fail(function(){
-		console.log("Error")
-	});
-}*/
-
+//Obtém os dados ajax e abre um popup para mostrar
+//uma listagem Master-Detail
+//Aplica efeitos de embaçamento para dar foco à listagem
+//Ao fechar o efeito é retirado
 function openPopUp(main_path,data){
 	let father = document.getElementById('popup')
 	let data_list = document.getElementById('data')
 	let masterlist = document.getElementById('masterlist')
+	let html = loadContent(main_path,data)
+
 	masterlist.style.zIndex = "-1"
 	father.style.display = 'inline-block'
 	document.getElementsByTagName('main')[0].style.filter = "blur(5px)"
-	var html = loadContent(main_path,data)
 	data_list.insertAdjacentHTML('beforeend',html)
+	//Dá foco à listagem
+	document.documentElement.scrollTop = 200;
 }
 
 function loadContent(main_path,data){
-	console.log(data)
 	let attribute = new Array();
 	let info = new Array();
+
+	//De acordo com o que for pedido é atribuido
+	//um array para dar os dados equivalentes
 	switch(main_path){
 		case 'people':
-			attribute = ["Name","Birth Year","Gender","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
-			info = [data["name"],data["birth_year"],data["gender"],data["height"],data["mass"],data["hair_color"],data["skin_color"],data["eye_color"],getGroupDataName('films',data)]
+			attribute = ["Name","Birth Year","Gender","Specie","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
+			info = [data["name"],data["birth_year"],getGender(data["gender"]), getGroupDataName('species',data),data["height"]+" cm",data["mass"]+" kg",data["hair_color"],data["skin_color"],data["eye_color"],getGroupDataName('films',data)]
 			break
 		case 'films':
-			attribute = ["Title","characters","Director","Release Date","Episode","Producer","Opening"]
+			attribute = ["Title","Characters","Director","Release Date","Episode","Producer","Opening"]
 			info = [data["title"],getGroupDataName('characters',data),data["director"],data["release_date"],data["episode_id"],data["producer"],formatOpeningText(data["opening_crawl"])]
 			break
 		case 'planets':
@@ -130,9 +119,10 @@ function loadContent(main_path,data){
 	return html
 }
 
+//Retorna os dados contidos em arrays que levam a outras páginas do json
 function getGroupDataName(main_path,data){
-	var group = ""
-	var result = ""
+	let group = ""
+	let result = ""
 	switch(main_path){
 		case 'people':
 			result = data["pilots"]; 		
@@ -146,9 +136,12 @@ function getGroupDataName(main_path,data){
 		case 'characters':
 			result = data["characters"]
 			break
+		case 'species':
+			result = data["species"]
+			break
 	}
 	for(let i in result){
-		group += getDataName(main_path,result[i]) + ", "
+		group += getDataName(main_path,result[i]) + "<br>"
 	}
 	if(group[group.length-1] == ' '){
 		group = group.substr(0,group.length-1)
@@ -157,9 +150,11 @@ function getGroupDataName(main_path,data){
 	return group
 }
 
+//Requisição ajax não-assincrona é necessária para dar um retorno dos dados
 function getDataName(main_path,main_url){
 	var result;
     $.ajax({
+    	type: 'GET',
 	    url:main_url,
 	   	async:false,
 	    success:function(data) {

@@ -2353,6 +2353,8 @@ audio:not([controls]) {
  */
 img {
   border-style: none;
+  width:100%;
+  height:100%;
 }
 
 img#icon {
@@ -2360,6 +2362,10 @@ img#icon {
   width:32px;
   height:32px;
   margin-top:15px;
+}
+img#icon:hover {
+  width:40px;
+  height:40px;
 }
 
 /**
@@ -7653,7 +7659,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav .user-view {
   position: relative;
-  padding: 32px 32px 0;
+  padding: 32px 32px 32px;
   margin-bottom: 8px;
 }
 

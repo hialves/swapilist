@@ -1,16 +1,15 @@
+header{
+	width:100%;
+	position:fixed;
+	z-index: 999;
+	margin-top:0;
+	top:0;
+	margin-bottom:100px;
+}
 nav a{
 	display:block!important;
 	width:auto!important;
-}
-nav{
-	display:block!important;
-}
-body{
-	background-color:white;
-}
-nav a{
 	color: #ffe300!important;
 	font-size: 30px!important;
 	font-family: 'starwars';
-	
 }

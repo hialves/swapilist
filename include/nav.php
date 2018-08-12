@@ -1,14 +1,4 @@
 <header>
-	<!--<nav>
-		<a class="btn-flat waves-effect waves-yellow waves-ripple" href="/swapi/index.php">Home</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/films.php">Films</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/characters.php">Characters</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/planets.php">Planets</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/species.php">Species</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/starships.php">Starships</a>
-		<a class="waves-effect waves-yellow" href="/swapi/app/views/Vehicles.php">Vehicles</a>
-	</nav>
--->
 	<ul id="slide-out" class="sidenav">
 	    <li>
 	    	<div class="user-view">
@@ -16,8 +6,6 @@
 		    		<img src="/swapi/imgs/background2.jpg">
 		    	</div>
 		    	<a href="#user"><img class="circle" src="/swapi/imgs/star-wars.png"></a>
-		    	<a href="#name"><span class="white-text name"></span></a>
-		    	<a href="#email"><span class="white-text email"></span></a>
 	    	</div>
 	    </li>
 	    <li><a class="btn-flat waves-effect waves-light" href="/swapi/index.php">Home</a></li>
@@ -28,10 +16,11 @@
 		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/starships.php">Starships</a></li>
 		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/Vehicles.php">Vehicles</a></li>
   	</ul>
-  <nav><img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon3.png"><a id="center_logo" class="brand-logo center">Star Wars</a></nav>
+  <nav><img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon.png"><a id="center_logo" class="brand-logo center">Star Wars</a></nav>
 	<script>
 		$(document).ready(function(){
 		    $('.sidenav').sidenav();
 		});
 	</script>
 </header>
+<footer>TM & © Lucasfilm Ltd. All Rights Reserved</footer>

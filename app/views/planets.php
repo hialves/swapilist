@@ -11,6 +11,7 @@
 		</script>
 		<main>
 			<?php require_once("../../include/nav.php"); ?>
+			<h2 id="sec_title"> Planets </h2>
 			<div class="container">
 				<div id="masterlist">
 					<ul id="list"></ul>
