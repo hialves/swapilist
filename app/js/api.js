@@ -30,7 +30,11 @@ function getData(main_path,data,page){
 		case 'films':
 			for(var i=0;i < len;i++){
 				var li = document.createElement("li")
-				li.className = 'element'
+				if(i%2==0){
+					li.className = 'element waves-effect waves-light'
+				}else{
+					li.className = 'element waves-effect waves-light'
+				}
 				let info = data["results"][i]
 				li.addEventListener('click',(e)=>openPopUp(main_path,info))
 				li.innerHTML = data["results"][i]["title"]
@@ -41,7 +45,11 @@ function getData(main_path,data,page){
 			if(data["next"] != null || data["previous"] != null){
 				for(var i=0;i < len;i++){
 					var li = document.createElement("li")
-					li.className = 'element'
+					if(i%2==0){
+						li.className = 'element waves-effect waves-light'
+					}else{
+						li.className = 'element waves-effect waves-light'
+					}
 					//let id = getId(main_path,data,i)
 					let info = data["results"][i]
 					li.addEventListener('click',()=>openPopUp(main_path,info))
@@ -72,7 +80,8 @@ function getData(main_path,data,page){
 function openPopUp(main_path,data){
 	let father = document.getElementById('popup')
 	let data_list = document.getElementById('data')
-	let popup = document.getElementById('popup')
+	let masterlist = document.getElementById('masterlist')
+	masterlist.style.zIndex = "-1"
 	father.style.display = 'inline-block'
 	document.getElementsByTagName('main')[0].style.filter = "blur(5px)"
 	var html = loadContent(main_path,data)
@@ -149,7 +158,6 @@ function getGroupDataName(main_path,data){
 }
 
 function getDataName(main_path,main_url){
-	//$.get("https://swapi.co/api/starships/10/",callback)
 	var result;
     $.ajax({
 	    url:main_url,

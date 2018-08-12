@@ -1,5 +1,51 @@
-li{
+@font-face{
+	font-family: 'starwarslist';
+	src: url("/swapi/include/STARWARS.ttf");
+}
+@font-face{
+	font-family: 'starwars';
+	src: url("/swapi/include/Starjedi.ttf");
+}
+ul#list{
+	width:100%;
+	height:100%;
+	margin-left: 50px;
+}
+
+ul#list li.element{
+	width: 200px;
+	height: 150px;
+	margin: 0 auto;
+	margin-top:50px;
+	padding-top:10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	background: rgba(0,0,0,.7);
+	overflow: hidden;
+	vertical-align: middle;
+}
+ul#list li.element:nth-child(odd) {
+  float:left;
+}
+ul#list li.element:hover{
+	background-color:white;
+	color:black;
+}
+.element{
+	margin-top:100px;
+}
+li.element{
 	list-style-type:none;
 	float: left;
-	padding:10px;
+	
+	background-color:black;
+	color:white;
+	text-align:center;
+}
+
+li.element{
+	font-size:30px;
+	margin-bottom:50px;
+	margin-right: 30px;
+	font-family: 'starwarslist'
 }

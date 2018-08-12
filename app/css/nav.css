@@ -5,3 +5,12 @@ nav a{
 nav{
 	display:block!important;
 }
+body{
+	background-color:white;
+}
+nav a{
+	color: #ffe300!important;
+	font-size: 30px!important;
+	font-family: 'starwars';
+	
+}

@@ -50,6 +50,8 @@ function close_popup(){
 	delete_childs(father)
 	document.getElementById('popup').style.display = 'none'
 	document.getElementsByTagName('main')[0].style.filter = 'none'
+	let masterlist = document.getElementById('masterlist')
+	masterlist.style.zIndex = "1"
 }
 
 function formatOpeningText(text){

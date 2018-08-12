@@ -2359,6 +2359,7 @@ img#icon {
   border-style: none;
   width:32px;
   height:32px;
+  margin-top:15px;
 }
 
 /**
@@ -4514,7 +4515,9 @@ html {
     font-size: 14.5px;
   }
 }
-
+html{
+  background-color:black;
+}
 @media only screen and (min-width: 1200px) {
   html {
     font-size: 15px;
@@ -7581,7 +7584,7 @@ input[type=range]::-ms-thumb {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.sidenav li > a {
+.sidenav li > a{
   color: #ffe300;
   display: block;
   font-size: 14px;
@@ -7591,8 +7594,10 @@ input[type=range]::-ms-thumb {
   padding: 0 32px;
 }
 
-.sidenav li > a:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+
+.sidenav li > a.btn-flat:hover {
+  background-color: rgba(0,0,0,.6);
+  color:white;
 }
 
 .sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-flat, .sidenav li > a.btn-floating {
@@ -7604,7 +7609,10 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav li > a.btn-flat {
-  color: #343434;
+  color: #ffe300;
+  font-family: 'starwarslist';
+  font-size: 25px;
+  margin:0 auto;
 }
 
 .sidenav li > a.btn:hover, .sidenav li > a.btn-large:hover, .sidenav li > a.btn-small:hover, .sidenav li > a.btn-large:hover {
@@ -8370,7 +8378,8 @@ input[type=range]::-ms-thumb {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
+  background-color:black;
   -webkit-perspective: 500px;
           perspective: 500px;
   -webkit-transform-style: preserve-3d;
@@ -8425,7 +8434,8 @@ input[type=range]::-ms-thumb {
 }
 
 .carousel .carousel-item > img {
-  width: 100%;
+  width: 500px;
+  height:400px;
 }
 
 .carousel .indicators {

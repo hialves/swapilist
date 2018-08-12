@@ -1,17 +1,24 @@
 #popup{
 	display:none;
+	width:70%;
 	height:auto;
-	width:99%;
-	height:auto;
+	margin: 0 auto;
+	top:30%;
+	left:50%;
+	transform: translateX(-50%);
 	border:1px solid black;
 	position:absolute;
-	background-color:rgba(0,0,0,.7);
+	background-color:rgba(0,0,0,.9);
 	border-radius: 10px;
+	z-index:2;	
 }
 #popup table, th, td{
 	border-collapse: collapse;
 	position:relative;
 	color:white;
+	font-size:20px;
+	font-family: 'starwarslist'
+	text-align:center;
 }
 button#close{
 	float: right;

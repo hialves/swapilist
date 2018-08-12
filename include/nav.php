@@ -20,15 +20,15 @@
 		    	<a href="#email"><span class="white-text email"></span></a>
 	    	</div>
 	    </li>
-	    <li><a class="waves-effect waves-light waves-ripple" href="/swapi/index.php">Home</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/films.php">Films</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/characters.php">Characters</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/planets.php">Planets</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/species.php">Species</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/starships.php">Starships</a></li>
-		<li><a class="waves-effect waves-yellow" href="/swapi/app/views/Vehicles.php">Vehicles</a></li>
+	    <li><a class="btn-flat waves-effect waves-light" href="/swapi/index.php">Home</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/films.php">Films</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/characters.php">Characters</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/planets.php">Planets</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/species.php">Species</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/starships.php">Starships</a></li>
+		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/Vehicles.php">Vehicles</a></li>
   	</ul>
-  <img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon.png">
+  <nav><img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon3.png"><a id="center_logo" class="brand-logo center">Star Wars</a></nav>
 	<script>
 		$(document).ready(function(){
 		    $('.sidenav').sidenav();
