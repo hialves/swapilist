@@ -69,7 +69,6 @@ function openPopUp(main_path,data){
 		delete_childs(data_list)
 	}
 	let html = loadContent(main_path,data)
-
 	masterlist.style.zIndex = "-1"
 	father.style.display = 'inline-block'
 	document.getElementsByTagName('main')[0].style.filter = "blur(5px)"
@@ -84,22 +83,25 @@ function loadContent(main_path,data){
 
 	//De acordo com o que for pedido é atribuido
 	//um array para dar os dados equivalentes
+
+	//A demora é devido os dados em json estarem espalhados
+	//Necessitando obtê-los recursivamente em ajax
 	switch(main_path){
 		case 'people':
 			attribute = ["Name","Image","Birth Year","Gender","Specie","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
 			info = [data["name"],data["name"],data["birth_year"],getGender(data["gender"]), getGroupDataName('species',data),data["height"]+" cm",data["mass"]+" kg",data["hair_color"],data["skin_color"],data["eye_color"],getGroupDataName('films',data)]
 			break
 		case 'films':
-			attribute = ["Title","Image","Characters","Director","Release Date","Episode","Producer","Opening"]
-			info = [data["title"],data["title"],getGroupDataName('characters',data),data["director"],data["release_date"],data["episode_id"],data["producer"],formatOpeningText(data["opening_crawl"])]
+			attribute = ["Title","Characters","Director","Release Date","Episode","Producer","Opening"]
+			info = [data["title"],getGroupDataName('characters',data),data["director"],data["release_date"],data["episode_id"],data["producer"],formatOpeningText(data["opening_crawl"])]
 			break
 		case 'planets':
-			attribute = ["Name","Image","Population","Diameter","Climate","Terrain","Gravity","Orbital Period","Rotation Period","Surface Water","Residents"]
-			info = [data["name"],data["name"],data["population"],data["diameter"],data["climate"],data["terrain"],data["gravity"],data["orbital_period"],data["rotation_period"],data["surface_water"],getGroupDataName('planets',data)]
+			attribute = ["Name","Population","Diameter","Climate","Terrain","Gravity","Orbital Period","Rotation Period","Surface Water","Residents"]
+			info = [data["name"],data["population"],data["diameter"],data["climate"],data["terrain"],data["gravity"],data["orbital_period"],data["rotation_period"],data["surface_water"],getGroupDataName('planets',data)]
 			break
 		case 'species':
-			attribute = ["Name","Image","Language","Average Height","Average Lifespan","Classification","Designation","Skin Colors","Eye Colors","Hair Colors"]
-			info = [data["name"],data["name"],data["language"],data["average_height"],data["average_lifespan"],data["classification"],data["designation"],data["skin_colors"],data["eye_colors"],data["hair_colors"]]
+			attribute = ["Name","Language","Average Height","Average Lifespan","Classification","Designation","Skin Colors","Eye Colors","Hair Colors"]
+			info = [data["name"],data["language"],data["average_height"],data["average_lifespan"],data["classification"],data["designation"],data["skin_colors"],data["eye_colors"],data["hair_colors"]]
 			break
 		case 'starships':
 			attribute = ["Name","Image","Model","MGLT","Cargo Capacity","Consumables","Cost In Credits","Crew","Hyper Drive Rate","Length","Manufacturer","Max Atmosphering Speed","Starship Class","Passengers","Pilots","Films"]
@@ -118,7 +120,7 @@ function loadContent(main_path,data){
 		if(main_path == 'films' && attribute[i] == "Opening"){
 			html += "<td id='sw_opening'>"+info[i]+"</td>"
 		}else{
-			if(attribute[i] == "Image" || main_path == 'people' || main_path == 'starships' || main_path == 'vehicles'){
+			if(attribute[i] == "Image" && (main_path == 'people' || main_path == 'starships' || main_path == 'vehicles')){
 				html += "<td><img id='tag_image' src='/swapi/imgs/json_images/"+info[i]+".jpg'></td>"
 			}else{
 				html += "<td>"+info[i]+"</td>"

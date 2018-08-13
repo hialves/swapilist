@@ -1,4 +1,5 @@
 <header>
+	<div class="load"></div>
 	<ul id="slide-out" class="sidenav">
 	    <li>
 	    	<div class="user-view">
