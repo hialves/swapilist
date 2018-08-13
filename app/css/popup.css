@@ -8,7 +8,6 @@
 	transform: translateX(-50%);
 	position:absolute;
 	background-color:transparent;
-	
 	z-index:2;
 }
 #popup table, th, td{
@@ -31,7 +30,8 @@
 
 #popup th{
 	padding:10px;
-	background-color:crimson;
+	background-color:#ffe300;
+	color:black;
 	font-family: 'Arial'
 }
 
@@ -49,7 +49,7 @@ button#close{
 	position:relative;
 	padding:20px;
 	margin-right:80px;
-	background-color: crimson;
+	background-color: white;
 	font-size:30px;
 	color: black;
 	border:none;

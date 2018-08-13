@@ -2363,10 +2363,6 @@ img#icon {
   height:32px;
   margin-top:15px;
 }
-img#icon:hover {
-  width:40px;
-  height:40px;
-}
 
 /**
  * Hide the overflow in IE.
