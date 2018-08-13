@@ -56,8 +56,6 @@ ul#list li.element:nth-child(odd) {
 
 li.element{
 	font-size:28px;
-	margin-bottom:30px;
-	margin-right: 30px;
 	font-family: 'starwarslist'
 }
 h2#sec_title{
