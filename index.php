@@ -14,6 +14,7 @@
 			    <a class="carousel-item" href="/swapi/app/views/species.php"><img src="/swapi/imgs/species.jpg"></a>
 			    <a class="carousel-item" href="/swapi/app/views/starships.php"><img src="/swapi/imgs/starships.jpg"></a>
 			    <a class="carousel-item" href="/swapi/app/views/vehicles.php"><img src="/swapi/imgs/vehicles.jpg"></a>
+			    <img src="/swapi/imgs/json_images/Luke Skywalker.jpg">
 			</div>
 		  </div>
 		  <script>

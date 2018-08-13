@@ -86,28 +86,28 @@ function loadContent(main_path,data){
 	//um array para dar os dados equivalentes
 	switch(main_path){
 		case 'people':
-			attribute = ["Name","Birth Year","Gender","Specie","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
-			info = [data["name"],data["birth_year"],getGender(data["gender"]), getGroupDataName('species',data),data["height"]+" cm",data["mass"]+" kg",data["hair_color"],data["skin_color"],data["eye_color"],getGroupDataName('films',data)]
+			attribute = ["Name","Image","Birth Year","Gender","Specie","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
+			info = [data["name"],data["name"],data["birth_year"],getGender(data["gender"]), getGroupDataName('species',data),data["height"]+" cm",data["mass"]+" kg",data["hair_color"],data["skin_color"],data["eye_color"],getGroupDataName('films',data)]
 			break
 		case 'films':
-			attribute = ["Title","Characters","Director","Release Date","Episode","Producer","Opening"]
-			info = [data["title"],getGroupDataName('characters',data),data["director"],data["release_date"],data["episode_id"],data["producer"],formatOpeningText(data["opening_crawl"])]
+			attribute = ["Title","Image","Characters","Director","Release Date","Episode","Producer","Opening"]
+			info = [data["title"],data["title"],getGroupDataName('characters',data),data["director"],data["release_date"],data["episode_id"],data["producer"],formatOpeningText(data["opening_crawl"])]
 			break
 		case 'planets':
-			attribute = ["Name","Population","Diameter","Climate","Terrain","Gravity","Orbital Period","Rotation Period","Surface Water","Residents"]
-			info = [data["name"],data["population"],data["diameter"],data["climate"],data["terrain"],data["gravity"],data["orbital_period"],data["rotation_period"],data["surface_water"],getGroupDataName('planets',data)]
+			attribute = ["Name","Image","Population","Diameter","Climate","Terrain","Gravity","Orbital Period","Rotation Period","Surface Water","Residents"]
+			info = [data["name"],data["name"],data["population"],data["diameter"],data["climate"],data["terrain"],data["gravity"],data["orbital_period"],data["rotation_period"],data["surface_water"],getGroupDataName('planets',data)]
 			break
 		case 'species':
-			attribute = ["Name","Language","Average Height","Average Lifespan","Classification","Designation","Skin Colors","Eye Colors","Hair Colors"]
-			info = [data["name"],data["language"],data["average_height"],data["average_lifespan"],data["classification"],data["designation"],data["skin_colors"],data["eye_colors"],data["hair_colors"]]
+			attribute = ["Name","Image","Language","Average Height","Average Lifespan","Classification","Designation","Skin Colors","Eye Colors","Hair Colors"]
+			info = [data["name"],data["name"],data["language"],data["average_height"],data["average_lifespan"],data["classification"],data["designation"],data["skin_colors"],data["eye_colors"],data["hair_colors"]]
 			break
 		case 'starships':
-			attribute = ["Name","Model","MGLT","Cargo Capacity","Consumables","Cost In Credits","Crew","Hyper Drive Rate","Length","Manufacturer","Max Atmosphering Speed","Starship Class","Passengers","Pilots","Films"]
-			info = [data["name"],data["model"],data["MGLT"],data["cargo_capacity"],data["consumables"],data["cost_in_credits"],data["crew"],data["hyperdrive_rating"],data["length"],data["manufacturer"],data["max_atmosphering_speed"],data["starship_class"],data["passengers"],getGroupDataName('people',data),getGroupDataName('films',data)]
+			attribute = ["Name","Image","Model","MGLT","Cargo Capacity","Consumables","Cost In Credits","Crew","Hyper Drive Rate","Length","Manufacturer","Max Atmosphering Speed","Starship Class","Passengers","Pilots","Films"]
+			info = [data["name"],data["name"],data["model"],data["MGLT"],data["cargo_capacity"],data["consumables"],data["cost_in_credits"],data["crew"],data["hyperdrive_rating"],data["length"],data["manufacturer"],data["max_atmosphering_speed"],data["starship_class"],data["passengers"],getGroupDataName('people',data),getGroupDataName('films',data)]
 			break
 		case 'vehicles':
-			attribute = ["Name","Model","Cargo Capacity","Consumables","Cost In Credits","Crew","Length","Manufacturer","Max Atmosphering Speed","Vehicle Class","Passengers"]
-			info = [data["name"],data["model"],data["cargo_capacity"],data["consumables"],data["cost_in_credits"],data["crew"],data["length"],data["manufacturer"],data["max_atmosphering_speed"],data["vehicle_class"],data["passengers"]]
+			attribute = ["Name","Image","Model","Cargo Capacity","Consumables","Cost In Credits","Crew","Length","Manufacturer","Max Atmosphering Speed","Vehicle Class","Passengers"]
+			info = [data["name"],data["name"],data["model"],data["cargo_capacity"],data["consumables"],data["cost_in_credits"],data["crew"],data["length"],data["manufacturer"],data["max_atmosphering_speed"],data["vehicle_class"],data["passengers"]]
 			break
 	}
 	let html="";
@@ -118,7 +118,11 @@ function loadContent(main_path,data){
 		if(main_path == 'films' && attribute[i] == "Opening"){
 			html += "<td id='sw_opening'>"+info[i]+"</td>"
 		}else{
-			html += "<td>"+info[i]+"</td>"
+			if(attribute[i] == "Image" || main_path == 'people' || main_path == 'starships' || main_path == 'vehicles'){
+				html += "<td><img id='tag_image' src='/swapi/imgs/json_images/"+info[i]+".jpg'></td>"
+			}else{
+				html += "<td>"+info[i]+"</td>"
+			}
 		}
 		html += "</tr>"
 	}

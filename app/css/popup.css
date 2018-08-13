@@ -70,3 +70,7 @@ td#sw_opening{
 	font-family: 'starwarslist';
 	position: absolute;
 }
+img#tag_image{
+	width:auto;
+	height:auto;
+}
