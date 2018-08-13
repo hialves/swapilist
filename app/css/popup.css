@@ -53,8 +53,20 @@ button#close{
 	font-size:30px;
 	color: black;
 	border:none;
-	border-radius:300px;
+	transform: translateY(-24px);
 }
 button#close:hover{
 	background-color:#ffe300;
+}
+
+td#sw_opening{
+	padding:10px;
+	margin-left: 20px;
+	font-size:30px;
+	background-color:black;
+	overflow: visible;
+	color:#ffe300;
+	transform: perspective(2000px) rotateX(45deg) translateY(-600px);
+	font-family: 'starwarslist';
+	position: absolute;
 }

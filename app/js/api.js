@@ -65,6 +65,9 @@ function openPopUp(main_path,data){
 	let father = document.getElementById('popup')
 	let data_list = document.getElementById('data')
 	let masterlist = document.getElementById('masterlist')
+	if(data_list.hasChildNodes()){
+		delete_childs(data_list)
+	}
 	let html = loadContent(main_path,data)
 
 	masterlist.style.zIndex = "-1"
@@ -72,7 +75,7 @@ function openPopUp(main_path,data){
 	document.getElementsByTagName('main')[0].style.filter = "blur(5px)"
 	data_list.insertAdjacentHTML('beforeend',html)
 	//Dá foco à listagem
-	document.documentElement.scrollTop = 200;
+	document.documentElement.scrollTop = 250;
 }
 
 function loadContent(main_path,data){
@@ -112,7 +115,11 @@ function loadContent(main_path,data){
 	for(let i=0;i<info.length;i++){
 		html += "<tr>"
 		html += "<th>"+attribute[i]+"</th>"
-		html += "<td>"+info[i]+"</td>"
+		if(main_path == 'films' && attribute[i] == "Opening"){
+			html += "<td id='sw_opening'>"+info[i]+"</td>"
+		}else{
+			html += "<td>"+info[i]+"</td>"
+		}
 		html += "</tr>"
 	}
 	html += "</table>"
