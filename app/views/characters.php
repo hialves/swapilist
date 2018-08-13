@@ -5,7 +5,6 @@
 		<?php require_once("../../include/head.php"); ?>
 	</head>
 	<body>
-		
 		<script>api_call('people',1)</script>
 		<main>
 			<?php require_once("../../include/nav.php"); ?>
