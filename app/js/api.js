@@ -21,11 +21,7 @@ function getData(main_path,data,page){
 		case 'films':
 			for(var i=0;i < len;i++){
 				var li = document.createElement("li")
-				if(i%2==0){
-					li.className = 'element waves-effect waves-yellow'
-				}else{
-					li.className = 'element waves-effect waves-yellow'
-				}
+				li.className = 'element waves-effect waves-yellow'
 				let info = data["results"][i]
 				li.addEventListener('click',(e)=>openPopUp(main_path,info))
 				li.innerHTML = data["results"][i]["title"]
@@ -33,15 +29,11 @@ function getData(main_path,data,page){
 			}
 			break
 		default:
+			//Enquanto houver dados a serem
 			if(data["next"] != null || data["previous"] != null){
 				for(var i=0;i < len;i++){
-					var li = document.createElement("li")
-					if(i%2==0){
-						li.className = 'element waves-effect waves-yellow'
-					}else{
-						li.className = 'element waves-effect waves-yellow'
-					}
-					//let id = getId(main_path,data,i)
+					var li = document.createElement("li")		
+					li.className = 'element waves-effect waves-yellow'
 					let info = data["results"][i]
 					li.addEventListener('click',()=>openPopUp(main_path,info))
 					li.innerHTML = data["results"][i]["name"]
@@ -65,6 +57,8 @@ function openPopUp(main_path,data){
 	let father = document.getElementById('popup')
 	let data_list = document.getElementById('data')
 	let masterlist = document.getElementById('masterlist')
+	//Remove os dados atuais do popup se for clicado em outro
+	//enquanto estiver aberto
 	if(data_list.hasChildNodes()){
 		delete_childs(data_list)
 	}
@@ -85,7 +79,7 @@ function loadContent(main_path,data){
 	//um array para dar os dados equivalentes
 
 	//A demora é devido os dados em json estarem espalhados
-	//Necessitando obtê-los recursivamente em ajax
+	//Necessitando obtê-los iterativamente em ajax
 	switch(main_path){
 		case 'people':
 			attribute = ["Name","Image","Birth Year","Gender","Specie","Height","Mass","Hair Color","Skin Color","Eye Color","Films"]
@@ -138,7 +132,7 @@ function getGroupDataName(main_path,data){
 	let result = ""
 	switch(main_path){
 		case 'people':
-			result = data["pilots"]; 		
+			result = data["pilots"];
 			break
 		case 'films':
 			result = data["films"]
@@ -176,7 +170,7 @@ function getDataName(main_path,main_url){
 					result = data["title"]
 					break
 				default:
-					result = data["name"]; 		
+					result = data["name"];
 					break
 	    	}
 	    }
