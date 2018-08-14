@@ -29,7 +29,7 @@ function getData(main_path,data,page){
 			}
 			break
 		default:
-			//Enquanto houver dados a serem
+			//Enquanto houver dados a serem carregados
 			if(data["next"] != null || data["previous"] != null){
 				for(var i=0;i < len;i++){
 					var li = document.createElement("li")		
@@ -40,7 +40,7 @@ function getData(main_path,data,page){
 					father.appendChild(li)
 				}
 				//Se ainda existir dados a serem carregados
-				//a função principal é chamada novamente recursivamente
+				//a função principal é chamada novamente
 				if(data["next"] != null){
 					api_call(main_path,page+1)
 				}
