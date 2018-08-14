@@ -2,6 +2,15 @@
 <html>
 	<head>
 		<?php require_once("include/head.php"); ?>
+		<script>
+			window.onscroll = function(){
+				if(document.documentElement.scrollTop > 500){
+					document.getElementById('menu_alert').style.display = "block"
+				}else{
+					document.getElementById('menu_alert').style.display = "none"
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<?php require_once("include/nav.php"); ?>
@@ -37,5 +46,10 @@
 		  	}
 		  	
 		</script>
+		<div id="characters">
+			<img src="/swapiteste/imgs/background3.jpg">
+			<a href="/swapi/app/views/characters.php"><button>Start</button></a>
+		</div>
+
 	</body>
 </html>
