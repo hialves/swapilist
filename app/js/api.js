@@ -150,10 +150,6 @@ function getGroupDataName(main_path,data){
 	for(let i in result){
 		group += getDataName(main_path,result[i]) + "<br>"
 	}
-	if(group[group.length-1] == ' '){
-		group = group.substr(0,group.length-1)
-		group = group.substr(0,group.length-1)
-	}
 	return group
 }
 
