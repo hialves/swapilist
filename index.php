@@ -47,7 +47,7 @@
 		  	
 		</script>
 		<div id="characters">
-			<img src="/swapiteste/imgs/background3.jpg">
+			<img src="/swapi/imgs/background3.jpg">
 			<a href="/swapi/app/views/characters.php"><button>Start</button></a>
 		</div>
 
