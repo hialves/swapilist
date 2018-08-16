@@ -13,3 +13,38 @@ nav a{
 	font-size: 30px!important;
 	font-family: 'starwars';
 }
+div#search{
+	float:right;
+	display:inline-flex;
+	right:0;
+	top:0;
+	position:absolute;
+}
+div#search select{
+	display:inline-flex;
+	top:0;
+	float:right;
+	width:auto;
+	height:30px;
+	background-color:black;
+	border:none;
+	color:white;
+	outline:0;
+}
+div#search button{
+	width:50%;
+	height:30px;
+	background-color: black;
+	border:none;
+	color:white;
+	border:1px solid white;
+}
+div#search button:hover{
+	background-color:crimson;
+}
+
+div#search input[type="text"]{
+	height:30px;
+	margin-right:10px;
+	color:white;
+}

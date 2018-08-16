@@ -16,7 +16,7 @@ function api_call(main_path,page){
 //Obtém os dados ajax e os adiciona ao DOM
 function getData(main_path,data,page){
 	var len = data["results"].length
-	father = document.getElementById('list')
+	var father = document.getElementById('list')
 	switch(main_path){
 		case 'films':
 			for(var i=0;i < len;i++){
@@ -30,22 +30,25 @@ function getData(main_path,data,page){
 			break
 		default:
 			//Enquanto houver dados a serem carregados
-			if(data["next"] != null || data["previous"] != null){
-				for(var i=0;i < len;i++){
-					var li = document.createElement("li")		
-					li.className = 'element waves-effect waves-yellow'
-					let info = data["results"][i]
-					li.addEventListener('click',()=>openPopUp(main_path,info))
-					li.innerHTML = data["results"][i]["name"]
-					father.appendChild(li)
-				}
-				//Se ainda existir dados a serem carregados
-				//a função principal é chamada novamente
-				if(data["next"] != null){
-					api_call(main_path,page+1)
-				}
+			for(var i=0;i < len;i++){
+				var li = document.createElement("li")		
+				li.className = 'element waves-effect waves-yellow'
+				let info = data["results"][i]
+				li.addEventListener('click',()=>openPopUp(main_path,info))
+				li.innerHTML = data["results"][i]["name"]
+				father.appendChild(li)
+			}
+			//Se ainda existir dados a serem carregados
+			//a função principal é chamada novamente
+			if(data["next"] != null){
+				api_call(main_path,page+1)
 			}
 			break
+	}
+	if(len == 0){
+		var not_found = document.createElement("p")
+		not_found.innerHTML = "No results"
+		father.appendChild(not_found)
 	}
 }
 

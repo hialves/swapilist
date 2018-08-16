@@ -33,3 +33,10 @@ function getGender(data){
 			break
 	}
 }
+
+function search(){
+	var path = document.getElementById('select_value').value
+	var text = document.getElementById('text').value
+
+	window.location = "http://localhost/swapi/app/views/search.php?path="+path+"&text="+text
+}

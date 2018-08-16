@@ -1,5 +1,5 @@
 <head>
-	<link href="/swapiteste/app/css/index.css" rel="stylesheet">
+	<link href="/swapi/app/css/index.css" rel="stylesheet">
 </head>
 <header>
 	<div class="load"></div>
@@ -20,7 +20,23 @@
 		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/starships.php">Starships</a></li>
 		<li><a class="btn-flat waves-effect waves-light" href="/swapi/app/views/Vehicles.php">Vehicles</a></li>
   	</ul>
-  <nav><img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon.png"><p id="menu_alert">Menu</p><a id="center_logo" class="brand-logo center">Star Wars</a></nav>
+  <nav>
+  	<img data-target="slide-out" class="sidenav-trigger" id="icon" class="material-icons" src="/swapi/imgs/menu_icon.png">
+  	<p id="menu_alert">Menu</p>
+  	<div id="search">
+  		<input type="text" id="text" maxlength="50">
+  		<select id="select_value">
+  			<option value="people">Characters</option>
+  			<option value="films">Films</option>
+  			<option value="planets">Planets</option>
+  			<option value="species">Species</option>
+  			<option value="starships">Starships</option>
+  			<option value="vehicles">Vehicles</option>
+  		</select>
+  		<button onclick="search()">Search</button>
+  	</div>
+  	<a id="center_logo" class="brand-logo center">Star Wars</a>
+  </nav>
 	<script>
 		$(document).ready(function(){
 		    $('.sidenav').sidenav();
